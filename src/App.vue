@@ -1,5 +1,14 @@
 <script setup>
-import { RouterView, RouterLink } from 'vue-router';
+  import { RouterView, RouterLink } from 'vue-router';
+  import SideMenu from '@/components/sidemenu.vue';
+  import { ref } from 'vue';
+
+  const menuState = ref(true);
+
+    const onOffSideMenu = () => {
+        menuState.value = !menuState.value
+        console.log('click');
+    };
 </script>
 
 <template>
@@ -11,9 +20,17 @@ import { RouterView, RouterLink } from 'vue-router';
     <RouterLink class="nav-button" to="/generateCep">Gerador de CEPs</RouterLink>
     <RouterLink class="nav-button" to="">Meus Arquivos</RouterLink>
   </nav>
+  <SideMenu v-if="menuState == true"/>
+  <div class="toggle-menu" @click="onOffSideMenu">=</div>
 </template>
 
 <style scoped>
+.toggle-menu{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
 nav{
   height: 10vh;
   width: 100vw;
@@ -47,6 +64,12 @@ nav{
   max-height: 90vh;
   width: 100vw;
   /* overflow: hidden; */
+}
+
+@media screen and (min-width: 700px){
+  .sidemenu {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 700px){

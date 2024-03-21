@@ -66,7 +66,7 @@
   };
 
   const copiarParaAreaDeTransferencia = (elemento) => {
-    const textoACopiar = elemento.querySelector('.cep').innerText;
+    const textoACopiar = elemento.querySelector('.logradouro').innerText;
 
     // Cria um elemento textarea temporário
     const textareaTemporario = document.createElement('textarea');
@@ -125,7 +125,7 @@
 <style scoped>
 .wrap-select{
   height: 20vh;
-  width: 100vh;
+  width: 100vw;
   padding: 1vw;
   box-sizing: border-box;
 }
@@ -209,13 +209,34 @@ select{
 }
 
 @media screen and (max-width: 700px){
-  nav, .wrap-select{
+  nav{
     display: none;
   }
 
   .main{
     min-height: 100vh;
     max-height: 100vh;
+  }
+
+  .wrap-select{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+    gap: 2vh;
+  }
+  
+  .wrap-select-option{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    gap: 2vh;
+  }
+
+  .wrap-select-option select{
+    width: 50vw;
+    height: 5vh;
   }
 }
 </style>
